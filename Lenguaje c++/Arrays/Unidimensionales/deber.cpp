@@ -12,7 +12,7 @@ void llenardatos(float tabla[10][10], int fil, int col) {
     }
 }
 
-void imprimirtabla(float tabla[10][10], int fil, int col) {
+void imprimirdiagonales(float tabla[10][10], int fil, int col) {
     for (int i = 0; i < fil; i++) {
         for (int k = 0; k < col; k++) {
             if (i == k || i + k == col - 1) {
@@ -43,6 +43,15 @@ float sumadiagonalsecundaria(float tabla[10][10], int fil, int col) {
     return suma;
 }
 
+void mayordiagonal(float tabla[10][10], int fil, int col){
+    float diagonalprincipal = sumadiagonaprincipal(tabla, fil, col);
+    float diagonalsecundaria = sumadiagonalsecundaria(tabla, fil, col);
+    if(diagonalprincipal>diagonalsecundaria)
+        cout << "La diagonal principal es la mayor" <<endl;
+    else 
+        cout << "La diagonal secundaria es la mayor" <<endl;
+}
+
 int main() {
     int num;
     cout << "Introduce el numero de filas las mismas que seran para las columnas ya que es una matriz cuadrada : ";
@@ -54,9 +63,8 @@ int main() {
     float tabla[10][10];
 
     llenardatos(tabla, num, num);
-    imprimirtabla(tabla, num, num);
+    imprimirdiagonales(tabla, num, num);
     sumadiagonaprincipal(tabla, num, num);
     sumadiagonalsecundaria(tabla, num, num);
-
-  
+    mayordiagonal(tabla,num,num); 
 }
